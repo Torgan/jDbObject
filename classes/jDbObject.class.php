@@ -894,16 +894,19 @@ abstract class jDbObject
 					break;
 				case 'xml':
 				case 'xmltype':
+					jClasses::inc('jDbObject~SimpleXMLElementExtended');
 					$this->_special[$name] =
-						new jSimpleXMLElementExtended(
+						new SimpleXMLElementExtended(
 							$this->_dao_record->{$name}
 						);
 					break;
 				case 'hstore':
+					jClasses::inc('jDbObject~HStore');
 					$this->_special[$name] =
 						new HStore($this->_dao_record->{$name});
 					break;
 				case 'array':
+					jClasses::inc('jDbObject~PGArray');
 					$this->_special[$name] =
 						new PGArray($this->_dao_record->{$name});
 					break;
